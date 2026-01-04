@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpr52knlj0bhn"]
+
+[ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="1_2q6dc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rd3vj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q6dc"]
+
+[node name="Level" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_2q6dc")]
+position = Vector2(552, 555)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(550, 720)
+shape = SubResource("WorldBoundaryShape2D_rd3vj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(338.00003, 364)
+scale = Vector2(5.96, 1)
+shape = SubResource("RectangleShape2D_2q6dc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

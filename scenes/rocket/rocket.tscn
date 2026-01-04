@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpdovtc5o2deu"]
+
+[ext_resource type="Texture2D" uid="uid://7we3vc6it1sw" path="res://assets/rocket.png" id="1_3341w"]
+[ext_resource type="Script" uid="uid://bap0gkboby44v" path="res://scenes/rocket/rocket.gd" id="1_dkv7l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wp70"]
+friction = 0.3
+bounce = 0.15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wp70"]
+size = Vector2(24, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gt1y"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_0wp70")
+gravity_scale = 0.534
+script = ExtResource("1_dkv7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3341w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_0wp70")
+
+[node name="MainJet" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5gt1y")
+animation = &"idle"
