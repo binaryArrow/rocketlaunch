@@ -5,6 +5,8 @@ const ROTATION_SPEED = 3.0
 const THRUST_FORCE = 800.0  
 const MAX_SPEED = 500.0
 
+signal rocket_visible_on_screen(visible: bool)
+
 
 func _physics_process(_delta: float) -> void:
 	var rotation_input = 0.0
@@ -21,3 +23,11 @@ func _physics_process(_delta: float) -> void:
 
 		if linear_velocity.length() > MAX_SPEED:
 			linear_velocity = linear_velocity.normalized() * MAX_SPEED
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	emit_signal(rocket_visible_on_screen.get_name(), false)
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	emit_signal(rocket_visible_on_screen.get_name(), true)

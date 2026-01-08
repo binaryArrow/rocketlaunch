@@ -1,29 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpr52knlj0bhn"]
+[gd_scene load_steps=5 format=3 uid="uid://dpr52knlj0bhn"]
 
 [ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="1_2q6dc"]
+[ext_resource type="Texture2D" uid="uid://c50yfl0nfwjxd" path="res://assets/earth.png" id="1_w7c3h"]
+[ext_resource type="Script" uid="uid://b1vxxexucm7bn" path="res://scenes/level.gd" id="1_w8frs"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rd3vj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q6dc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q6dc"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_w8frs")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_2q6dc")]
-position = Vector2(552, 555)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Earth" type="StaticBody2D" parent="."]
 position = Vector2(0, -19)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(550, 720)
-shape = SubResource("WorldBoundaryShape2D_rd3vj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
+position = Vector2(704.99994, 958.00006)
+scale = Vector2(21.919651, 22.090874)
+shape = SubResource("CircleShape2D_2q6dc")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Earth"]
+position = Vector2(699, 923)
+rotation = -0.22621165
+scale = Vector2(2.169811, 1.9298246)
+texture = ExtResource("1_w7c3h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(338.00003, 364)
-scale = Vector2(5.96, 1)
-shape = SubResource("RectangleShape2D_2q6dc")
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_2q6dc")]
+position = Vector2(706, 693)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+[connection signal="rocket_visible_on_screen" from="CharacterBody2D" to="." method="_on_character_body_2d_rocket_visible_on_screen"]
