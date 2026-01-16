@@ -1,29 +1,91 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpr52knlj0bhn"]
+[gd_scene load_steps=8 format=3 uid="uid://dpr52knlj0bhn"]
 
 [ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="1_2q6dc"]
 [ext_resource type="Texture2D" uid="uid://c50yfl0nfwjxd" path="res://assets/earth.png" id="1_w7c3h"]
 [ext_resource type="Script" uid="uid://b1vxxexucm7bn" path="res://scenes/level.gd" id="1_w8frs"]
+[ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="4_mx8sn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2q6dc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8frs"]
+font_size = 20
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w8frs")
 
-[node name="Earth" type="StaticBody2D" parent="."]
+[node name="World" type="StaticBody2D" parent="."]
 position = Vector2(0, -19)
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World"]
 position = Vector2(704.99994, 958.00006)
 scale = Vector2(21.919651, 22.090874)
 shape = SubResource("CircleShape2D_2q6dc")
 
-[node name="Sprite2D" type="Sprite2D" parent="Earth"]
+[node name="Sprite2D" type="Sprite2D" parent="World"]
 position = Vector2(699, 923)
 rotation = -0.22621165
 scale = Vector2(2.169811, 1.9298246)
 texture = ExtResource("1_w7c3h")
 
+[node name="BottomBoundary" type="Area2D" parent="World"]
+position = Vector2(0, 19)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BottomBoundary"]
+position = Vector2(225, 839)
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="LeftBoundary" type="Area2D" parent="World"]
+position = Vector2(-241, -347)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftBoundary"]
+position = Vector2(225, 839)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="RightBoundary" type="Area2D" parent="World"]
+position = Vector2(1234, -332)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightBoundary"]
+position = Vector2(225, 839)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="TopBoundary" type="Area2D" parent="World"]
+position = Vector2(615, -827)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TopBoundary"]
+position = Vector2(149, 836)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_2q6dc")]
 position = Vector2(706, 693)
 
-[connection signal="rocket_visible_on_screen" from="CharacterBody2D" to="." method="_on_character_body_2d_rocket_visible_on_screen"]
+[node name="TimerLabel2" type="Label" parent="CharacterBody2D"]
+unique_name_in_owner = true
+offset_left = -21.0
+offset_top = -7.0
+offset_right = 21.0
+offset_bottom = 21.0
+label_settings = SubResource("LabelSettings_w8frs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_mx8sn")]
+position = Vector2(511, 231)
+scale = Vector2(6.7692575, 0.95908934)
+
+[connection signal="body_entered" from="World/BottomBoundary" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="World/LeftBoundary" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="World/RightBoundary" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="World/TopBoundary" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

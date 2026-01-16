@@ -23,6 +23,10 @@ window/size/viewport_height=840
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
+[layer_names]
+
+2d_physics/layer_2="landing-platforms"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

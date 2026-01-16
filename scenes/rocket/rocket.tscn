@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpdovtc5o2deu"]
+[gd_scene load_steps=9 format=3 uid="uid://cpdovtc5o2deu"]
 
 [ext_resource type="Texture2D" uid="uid://7we3vc6it1sw" path="res://assets/rocket.png" id="1_3341w"]
 [ext_resource type="Script" uid="uid://bap0gkboby44v" path="res://scenes/rocket/rocket.gd" id="1_dkv7l"]
+[ext_resource type="PackedScene" uid="uid://ro6lxjn72sch" path="res://scenes/rocket/jet_stream.tscn" id="2_7lajs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wp70"]
 friction = 0.3
@@ -18,11 +19,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lajs"]
+size = Vector2(14, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lajs"]
+font_size = 20
+
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 0
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_0wp70")
 gravity_scale = 0.534
 script = ExtResource("1_dkv7l")
+
+[node name="JetStream" parent="." instance=ExtResource("2_7lajs")]
+unique_name_in_owner = true
+position = Vector2(0, 17)
+emitting = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3341w")
@@ -35,7 +48,27 @@ shape = SubResource("RectangleShape2D_0wp70")
 sprite_frames = SubResource("SpriteFrames_5gt1y")
 animation = &"idle"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="LandingIndicator" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingIndicator"]
+position = Vector2(0, 17.5)
+shape = SubResource("RectangleShape2D_7lajs")
+debug_color = Color(0.7430391, 0.2695464, 0.9332651, 0.41960785)
+
+[node name="TimerLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -6.0
+offset_top = -55.0
+offset_right = 36.0
+offset_bottom = -27.0
+label_settings = SubResource("LabelSettings_7lajs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="LandingIndicator" to="." method="_on_landing_indicator_body_entered"]
+[connection signal="body_exited" from="LandingIndicator" to="." method="_on_landing_indicator_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

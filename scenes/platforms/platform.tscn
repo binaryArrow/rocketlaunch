@@ -3,6 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqg1e"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yqg1e")
