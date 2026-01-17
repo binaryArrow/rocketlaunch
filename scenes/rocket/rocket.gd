@@ -10,6 +10,8 @@ var WAIT_TIME = 5
 
 @onready var jet_stream = $JetStream as CPUParticles2D
 
+signal landed
+
 
 func _ready() -> void:
 	set_txt(str(WAIT_TIME))
@@ -38,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	timer_label.text = "LANDING SUCCESSFUL"
-	
+	emit_signal("landed")
 
 func _on_landing_indicator_body_entered(_body: Node2D) -> void:
 	timer.start()

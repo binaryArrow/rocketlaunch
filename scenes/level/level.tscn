@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpr52knlj0bhn"]
+[gd_scene load_steps=9 format=3 uid="uid://dpr52knlj0bhn"]
 
 [ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="1_2q6dc"]
 [ext_resource type="Texture2D" uid="uid://c50yfl0nfwjxd" path="res://assets/earth.png" id="1_w7c3h"]
-[ext_resource type="Script" uid="uid://b1vxxexucm7bn" path="res://scenes/level.gd" id="1_w8frs"]
+[ext_resource type="Script" uid="uid://b1vxxexucm7bn" path="res://scenes/level/level.gd" id="1_w8frs"]
+[ext_resource type="PackedScene" uid="uid://c3ah1bdol7em1" path="res://scenes/level/background.tscn" id="3_hnne4"]
 [ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="4_mx8sn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2q6dc"]
@@ -17,7 +18,6 @@ script = ExtResource("1_w8frs")
 
 [node name="World" type="StaticBody2D" parent="."]
 position = Vector2(0, -19)
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World"]
 position = Vector2(704.99994, 958.00006)
@@ -32,7 +32,7 @@ texture = ExtResource("1_w7c3h")
 
 [node name="BottomBoundary" type="Area2D" parent="World"]
 position = Vector2(0, 19)
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/BottomBoundary"]
 position = Vector2(225, 839)
@@ -40,7 +40,8 @@ shape = SubResource("WorldBoundaryShape2D_w8frs")
 
 [node name="LeftBoundary" type="Area2D" parent="World"]
 position = Vector2(-241, -347)
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftBoundary"]
 position = Vector2(225, 839)
@@ -49,7 +50,8 @@ shape = SubResource("WorldBoundaryShape2D_w8frs")
 
 [node name="RightBoundary" type="Area2D" parent="World"]
 position = Vector2(1234, -332)
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightBoundary"]
 position = Vector2(225, 839)
@@ -58,12 +60,15 @@ shape = SubResource("WorldBoundaryShape2D_w8frs")
 
 [node name="TopBoundary" type="Area2D" parent="World"]
 position = Vector2(615, -827)
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/TopBoundary"]
 position = Vector2(149, 836)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="Background" parent="World" instance=ExtResource("3_hnne4")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_2q6dc")]
 position = Vector2(706, 693)
@@ -88,4 +93,5 @@ scale = Vector2(6.7692575, 0.95908934)
 [connection signal="body_entered" from="World/LeftBoundary" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="World/RightBoundary" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="World/TopBoundary" to="." method="_on_area_2d_body_entered"]
+[connection signal="landed" from="CharacterBody2D" to="." method="_on_rocket_landed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
