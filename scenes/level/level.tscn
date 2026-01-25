@@ -20,12 +20,12 @@ script = ExtResource("1_w8frs")
 position = Vector2(0, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World"]
-position = Vector2(704.99994, 958.00006)
+position = Vector2(704.9999, 1025)
 scale = Vector2(21.919651, 22.090874)
 shape = SubResource("CircleShape2D_2q6dc")
 
 [node name="Sprite2D" type="Sprite2D" parent="World"]
-position = Vector2(699, 923)
+position = Vector2(699, 990)
 rotation = -0.22621165
 scale = Vector2(2.169811, 1.9298246)
 texture = ExtResource("1_w7c3h")
@@ -71,7 +71,7 @@ shape = SubResource("WorldBoundaryShape2D_w8frs")
 [node name="Background" parent="World" instance=ExtResource("3_hnne4")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_2q6dc")]
-position = Vector2(706, 693)
+position = Vector2(706, 759)
 
 [node name="TimerLabel2" type="Label" parent="CharacterBody2D"]
 unique_name_in_owner = true

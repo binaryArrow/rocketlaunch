@@ -9,8 +9,8 @@ shader_parameter/offset = Vector2(0, 0)
 shader_parameter/bigStarSlow = 2.0
 shader_parameter/mediumStarSlow = 6.0
 shader_parameter/smallStarSlow = 8.0
-shader_parameter/smallStarAmount = 0.003
-shader_parameter/mediumStarAmount = 0.002
+shader_parameter/smallStarAmount = 0.001
+shader_parameter/mediumStarAmount = 0.001
 shader_parameter/bigStarAmount = 0.001
 
 [node name="Background" type="CanvasLayer"]
