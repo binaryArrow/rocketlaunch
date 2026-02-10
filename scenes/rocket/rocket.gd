@@ -11,6 +11,7 @@ var WAIT_TIME = 5
 @onready var jet_stream = $JetStream as CPUParticles2D
 
 signal landed
+signal crashed
 
 
 func _ready() -> void:
@@ -42,9 +43,11 @@ func _on_timer_timeout() -> void:
 	timer_label.text = "LANDING SUCCESSFUL"
 	emit_signal("landed")
 
-func _on_landing_indicator_body_entered(_body: Node2D) -> void:
-	timer.start()
-	timer_label.visible = true
+func _on_landing_indicator_body_entered(body: Node2D) -> void:
+	if body is Platform and body.landing_zone:
+		print(body.landing_zone)
+		timer.start()
+		timer_label.visible = true
 
 func _on_landing_indicator_body_exited(_body: Node2D) -> void:
 	timer.stop()
@@ -57,3 +60,6 @@ func set_txt(text: String = ""):
 		timer_label.text = text
 	else:
 		timer_label.text = str(ceil(timer.time_left)).erase(1, 2)
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	emit_signal("crashed")

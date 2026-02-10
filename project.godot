@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="rocketlaunch"
 run/main_scene="uid://dpr52knlj0bhn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=120
 config/icon="res://icon.svg"
 
@@ -25,7 +29,7 @@ window/vsync/vsync_mode=0
 
 [layer_names]
 
-2d_physics/layer_2="landing-platforms"
+2d_physics/layer_2="platforms"
 2d_physics/layer_3="player"
 
 [rendering]
