@@ -6,7 +6,8 @@ const MAX_SPEED = 500.0
 var WAIT_TIME = 5
 @onready var timer = $Timer as Timer
 @onready var timer_label = %TimerLabel as Label
-
+@onready var animated_sprite = $AnimatedSprite2D as AnimatedSprite2D
+@onready var rocket_sprite = $RocketSprite as Sprite2D
 
 @onready var jet_stream = $JetStream as CPUParticles2D
 
@@ -61,5 +62,17 @@ func set_txt(text: String = ""):
 	else:
 		timer_label.text = str(ceil(timer.time_left)).erase(1, 2)
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
+func _on_hit_box_body_entered(_body: Node2D) -> void:
+	die()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
 	emit_signal("crashed")
+
+func die():
+	set_physics_process(false)
+	jet_stream.emitting = false
+	gravity_scale = 0.0
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0
+	rocket_sprite.visible = false
+	animated_sprite.play("die")
