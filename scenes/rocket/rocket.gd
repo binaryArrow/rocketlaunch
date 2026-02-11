@@ -65,8 +65,13 @@ func set_txt(text: String = ""):
 func _on_hit_box_body_entered(_body: Node2D) -> void:
 	die()
 
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("WorldBounds"):
+		restart_game()
+
 func _on_animated_sprite_2d_animation_finished() -> void:
-	emit_signal("crashed")
+	restart_game()
 
 func die():
 	set_physics_process(false)
@@ -76,3 +81,7 @@ func die():
 	angular_velocity = 0.0
 	rocket_sprite.visible = false
 	animated_sprite.play("die")
+
+func restart_game():
+	print("Rocket crashed! Restarting level...")
+	get_tree().call_deferred("reload_current_scene")
