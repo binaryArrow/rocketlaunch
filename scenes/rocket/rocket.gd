@@ -11,9 +11,6 @@ var WAIT_TIME = 5
 
 @onready var jet_stream = $JetStream as CPUParticles2D
 
-signal landed
-signal crashed
-
 
 func _ready() -> void:
 	set_txt(str(WAIT_TIME))
@@ -41,12 +38,10 @@ func _physics_process(_delta: float) -> void:
 		jet_stream.emitting = false
 
 func _on_timer_timeout() -> void:
-	timer_label.text = "LANDING SUCCESSFUL"
-	emit_signal("landed")
+	LevelManager.next_level()
 
 func _on_landing_indicator_body_entered(body: Node2D) -> void:
-	if body is Platform and body.landing_zone:
-		print(body.landing_zone)
+	if body is LandingPlatform:
 		timer.start()
 		timer_label.visible = true
 
@@ -65,7 +60,6 @@ func set_txt(text: String = ""):
 func _on_hit_box_body_entered(_body: Node2D) -> void:
 	die()
 
-
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("WorldBounds"):
 		restart_game()
@@ -83,5 +77,4 @@ func die():
 	animated_sprite.play("die")
 
 func restart_game():
-	print("Rocket crashed! Restarting level...")
 	get_tree().call_deferred("reload_current_scene")

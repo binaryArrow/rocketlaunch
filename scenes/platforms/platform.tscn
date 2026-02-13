@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://ytjgagktpric" path="res://scenes/platforms/platform.gd" id="1_de33r"]
 
 [sub_resource type="Gradient" id="Gradient_de33r"]
-offsets = PackedFloat32Array(0, 0.07875895, 0.15274464)
-colors = PackedColorArray(1, 0, 0.87058824, 1, 1, 0, 0.87058824, 1, 1, 1, 1, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5155131)
+colors = PackedColorArray(0, 0.7216492, 0.31527552, 1, 0.8763594, 0.31305414, 0.36136645, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tv4dh"]
 gradient = SubResource("Gradient_de33r")

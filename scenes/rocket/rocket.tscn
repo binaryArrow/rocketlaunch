@@ -7,7 +7,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0wp70"]
 friction = 0.3
-bounce = 0.15
+absorbent = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7icg"]
 atlas = ExtResource("2_2efvq")
@@ -228,6 +228,7 @@ collision_layer = 4
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_0wp70")
 gravity_scale = 0.534
+continuous_cd = 1
 script = ExtResource("1_dkv7l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1466557542]
@@ -249,9 +250,10 @@ texture = ExtResource("1_3341w")
 [node name="HitBox" type="Area2D" parent="." unique_id=1132895764]
 collision_layer = 4
 collision_mask = 11
+input_pickable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox" unique_id=1500537398]
-polygon = PackedVector2Array(6, 7, -6, 7, -6, -18, 0, -26, 6, -18)
+polygon = PackedVector2Array(6, 3, -6, 3, -6, -18, 0, -26, 6, -18)
 
 [node name="BottomPart" type="CollisionShape2D" parent="." unique_id=1486430170]
 position = Vector2(0, 12.5)

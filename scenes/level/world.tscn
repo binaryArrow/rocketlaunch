@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://50ejuu2h1pxd"]
+
+[ext_resource type="Texture2D" uid="uid://c50yfl0nfwjxd" path="res://assets/earth.png" id="1_y5wde"]
+[ext_resource type="PackedScene" uid="uid://c3ah1bdol7em1" path="res://scenes/level/background.tscn" id="2_gkrfc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q6dc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
+
+[node name="World" type="StaticBody2D" unique_id=1471703231]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808965668]
+position = Vector2(704.9999, 1025)
+scale = Vector2(21.919651, 22.090874)
+shape = SubResource("CircleShape2D_2q6dc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1106237815]
+position = Vector2(699, 990)
+rotation = -0.22621165
+scale = Vector2(2.1703534, 1.954316)
+texture = ExtResource("1_y5wde")
+
+[node name="BottomBoundary" type="Area2D" parent="." unique_id=536298659 groups=["WorldBounds"]]
+position = Vector2(0, 19)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=724762065]
+position = Vector2(225, 839)
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="LeftBoundary" type="Area2D" parent="." unique_id=2039502499 groups=["WorldBounds"]]
+position = Vector2(-241, -347)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary" unique_id=873207606]
+position = Vector2(225, 839)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="RightBoundary" type="Area2D" parent="." unique_id=576534108 groups=["WorldBounds"]]
+position = Vector2(1234, -332)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary" unique_id=793522758]
+position = Vector2(225, 839)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="TopBoundary" type="Area2D" parent="." unique_id=1744571761 groups=["WorldBounds"]]
+position = Vector2(615, -827)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary" unique_id=130909253]
+position = Vector2(149, 836)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="Background" parent="." unique_id=1892073505 instance=ExtResource("2_gkrfc")]
