@@ -40,6 +40,7 @@ WorldBounds="boundaries for the player to go"
 2d_physics/layer_2="platforms"
 2d_physics/layer_3="player"
 2d_physics/layer_4="worldBounds"
+2d_physics/layer_5="obstacles"
 
 [rendering]
 

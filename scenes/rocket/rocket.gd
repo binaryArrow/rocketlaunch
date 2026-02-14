@@ -3,7 +3,6 @@ extends RigidBody2D
 const ROTATION_SPEED = 3.0 
 const THRUST_FORCE = 800.0  
 const MAX_SPEED = 500.0
-var WAIT_TIME = 5
 @onready var timer = $Timer as Timer
 @onready var timer_label = %TimerLabel as Label
 @onready var animated_sprite = $AnimatedSprite2D as AnimatedSprite2D
@@ -13,7 +12,7 @@ var WAIT_TIME = 5
 
 
 func _ready() -> void:
-	set_txt(str(WAIT_TIME))
+	set_txt(str(timer.wait_time))
 	timer_label.visible = false
 
 func _physics_process(_delta: float) -> void:
@@ -44,12 +43,13 @@ func _on_landing_indicator_body_entered(body: Node2D) -> void:
 	if body is LandingPlatform:
 		timer.start()
 		timer_label.visible = true
+	if body is Obstacle:
+		die()
 
 func _on_landing_indicator_body_exited(_body: Node2D) -> void:
 	timer.stop()
-	timer.wait_time = WAIT_TIME
 	timer_label.visible = false
-	set_txt(str(WAIT_TIME))
+	set_txt(str(timer.wait_time))
 
 func set_txt(text: String = ""):
 	if text != "":

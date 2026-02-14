@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cvs6o1j6lrd1m"]
+
+[ext_resource type="Script" uid="uid://djbk15p01f0el" path="res://scenes/platforms/obstacle.gd" id="1_str2b"]
+
+[sub_resource type="Gradient" id="Gradient_ghfkk"]
+colors = PackedColorArray(0.7372549, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_str2b"]
+gradient = SubResource("Gradient_ghfkk")
+fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqg1e"]
+size = Vector2(114, 20)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=2127928289]
+collision_layer = 16
+script = ExtResource("1_str2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1729750667]
+position = Vector2(-8.940697e-07, 9.536743e-07)
+scale = Vector2(1.78125, 0.31249997)
+texture = SubResource("GradientTexture2D_str2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1821595810]
+shape = SubResource("RectangleShape2D_yqg1e")
