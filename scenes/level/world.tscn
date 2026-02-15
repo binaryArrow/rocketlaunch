@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://50ejuu2h1pxd"]
 
+[ext_resource type="Script" uid="uid://beaibjklu07sf" path="res://scenes/level/world.gd" id="1_gkrfc"]
 [ext_resource type="Texture2D" uid="uid://c50yfl0nfwjxd" path="res://assets/earth.png" id="1_y5wde"]
 [ext_resource type="PackedScene" uid="uid://c3ah1bdol7em1" path="res://scenes/level/background.tscn" id="2_gkrfc"]
 
@@ -8,6 +9,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
 
 [node name="World" type="StaticBody2D" unique_id=1471703231]
+script = ExtResource("1_gkrfc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808965668]
 position = Vector2(704.9999, 1025)
@@ -60,3 +62,21 @@ rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_w8frs")
 
 [node name="Background" parent="." unique_id=1892073505 instance=ExtResource("2_gkrfc")]
+
+[node name="Control" type="Control" parent="." unique_id=1809645615]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1443.0
+offset_bottom = 844.0
+
+[node name="LevelLabel" type="Label" parent="Control" unique_id=496377120]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_top = 19.0
+offset_right = 0.5
+offset_bottom = 42.0
+grow_horizontal = 2
