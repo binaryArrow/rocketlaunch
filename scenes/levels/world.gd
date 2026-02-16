@@ -5,4 +5,3 @@ class_name World
 
 func _ready() -> void:
 	level_label.text = "Level %d" % (LevelManager.current_level + 1)
-	print(level_label.text)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bhes5xku1ei8t"]
+
+[ext_resource type="PackedScene" uid="uid://50ejuu2h1pxd" path="res://scenes/levels/world.tscn" id="1_fjlvv"]
+[ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="2_o34q2"]
+[ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="3_rdsj4"]
+
+[node name="Level" type="Node2D" unique_id=1466572793]
+
+[node name="World" parent="." unique_id=1471703231 instance=ExtResource("1_fjlvv")]
+position = Vector2(0, -19)
+
+[node name="CharacterBody2D" parent="." unique_id=2134320788 instance=ExtResource("2_o34q2")]
+position = Vector2(706, 759)
+
+[node name="StaticBody2D" parent="." unique_id=709902558 instance=ExtResource("3_rdsj4")]
+position = Vector2(720, 319)
+scale = Vector2(0.18665183, 0.89077526)

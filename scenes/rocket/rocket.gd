@@ -43,8 +43,6 @@ func _on_landing_indicator_body_entered(body: Node2D) -> void:
 	if body is LandingPlatform:
 		timer.start()
 		timer_label.visible = true
-	if body is Obstacle:
-		die()
 
 func _on_landing_indicator_body_exited(_body: Node2D) -> void:
 	timer.stop()
@@ -78,3 +76,9 @@ func die():
 
 func restart_game():
 	get_tree().call_deferred("reload_current_scene")
+
+
+func _on_body_entered(body: Node) -> void:
+	print("Collided with: ", body.name)
+	if body is Obstacle:
+		die()

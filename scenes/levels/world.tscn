@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://50ejuu2h1pxd"]
 
-[ext_resource type="Script" uid="uid://beaibjklu07sf" path="res://scenes/level/world.gd" id="1_gkrfc"]
+[ext_resource type="Script" uid="uid://beaibjklu07sf" path="res://scenes/levels/world.gd" id="1_gkrfc"]
 [ext_resource type="Texture2D" uid="uid://c50yfl0nfwjxd" path="res://assets/earth.png" id="1_y5wde"]
-[ext_resource type="PackedScene" uid="uid://c3ah1bdol7em1" path="res://scenes/level/background.tscn" id="2_gkrfc"]
+[ext_resource type="PackedScene" uid="uid://c3ah1bdol7em1" path="res://scenes/levels/background.tscn" id="2_gkrfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2q6dc"]
 
