@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cj7fthhkku5dy"]
+
+[ext_resource type="PackedScene" uid="uid://50ejuu2h1pxd" path="res://scenes/levels/world.tscn" id="1_4xrrt"]
+[ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="2_ffn4t"]
+[ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="3_8w08o"]
+[ext_resource type="PackedScene" uid="uid://cvs6o1j6lrd1m" path="res://scenes/platforms/obstacle.tscn" id="4_2kba5"]
+
+[node name="Level" type="Node2D" unique_id=1466572793]
+
+[node name="World" parent="." unique_id=1471703231 instance=ExtResource("1_4xrrt")]
+position = Vector2(0, -19)
+
+[node name="CharacterBody2D" parent="." unique_id=2134320788 instance=ExtResource("2_ffn4t")]
+position = Vector2(706, 759)
+
+[node name="StaticBody2D" parent="." unique_id=709902558 instance=ExtResource("3_8w08o")]
+position = Vector2(1030, 492)
+scale = Vector2(0.39079747, 0.89077526)
+
+[node name="StaticBody2D2" parent="." unique_id=2127928289 instance=ExtResource("4_2kba5")]
+position = Vector2(779, 565)
+scale = Vector2(5.3364305, 0.99999994)
+
+[node name="StaticBody2D4" parent="." unique_id=219941994 instance=ExtResource("4_2kba5")]
+position = Vector2(484.00006, 327.99994)
+rotation = 1.5707964
+scale = Vector2(4.3364305, 0.99999994)
+
+[node name="StaticBody2D5" parent="." unique_id=1802952821 instance=ExtResource("4_2kba5")]
+position = Vector2(854.99994, 383)
+scale = Vector2(4.3364305, 0.99999994)
+
+[node name="StaticBody2D6" parent="." unique_id=2109968818 instance=ExtResource("4_2kba5")]
+position = Vector2(721.99994, 229)
+scale = Vector2(4.3364305, 0.99999994)
+
+[node name="StaticBody2D3" parent="." unique_id=1813633848 instance=ExtResource("4_2kba5")]
+position = Vector2(1091.9999, 339)
+rotation = 1.5707964
+scale = Vector2(4.1364307, 0.99999994)

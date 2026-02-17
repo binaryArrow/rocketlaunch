@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://co7y7gbqo63c4"]
+
+[ext_resource type="PackedScene" uid="uid://50ejuu2h1pxd" path="res://scenes/levels/world.tscn" id="1_1wfja"]
+[ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="2_k85di"]
+[ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="3_wi8i0"]
+[ext_resource type="PackedScene" uid="uid://cvs6o1j6lrd1m" path="res://scenes/platforms/obstacle.tscn" id="4_k85di"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1wfja"]
+absorbent = true
+
+[sub_resource type="Animation" id="Animation_reqmk"]
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D7:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1320, 469), Vector2(1016, 469)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(334, 469), Vector2(88, 469)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D9:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1262, 621), Vector2(1545, 621)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D8:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(164, 621), Vector2(518, 621)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StaticBody2D10:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(205, 325), Vector2(-122, 325)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StaticBody2D11:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1309.0001, 325), Vector2(913, 325)]
+}
+
+[sub_resource type="Animation" id="Animation_5d6be"]
+resource_name = "default"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1028, 178), Vector2(239, 178)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flxei"]
+_data = {
+&"RESET": SubResource("Animation_reqmk"),
+&"default": SubResource("Animation_5d6be")
+}
+
+[node name="Level" type="Node2D" unique_id=1466572793]
+
+[node name="World" parent="." unique_id=1471703231 instance=ExtResource("1_1wfja")]
+position = Vector2(0, -19)
+
+[node name="CharacterBody2D" parent="." unique_id=2134320788 instance=ExtResource("2_k85di")]
+position = Vector2(706, 759)
+
+[node name="StaticBody2D" parent="." unique_id=709902558 instance=ExtResource("3_wi8i0")]
+position = Vector2(1028, 178)
+scale = Vector2(0.48000002, 1)
+physics_material_override = SubResource("PhysicsMaterial_1wfja")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1062261116]
+libraries/ = SubResource("AnimationLibrary_flxei")
+autoplay = &"RESET"
+
+[node name="StaticBody2D6" parent="." unique_id=2127928289 instance=ExtResource("4_k85di")]
+position = Vector2(334, 469)
+scale = Vector2(7.7073364, 1.0922943)
+
+[node name="StaticBody2D7" parent="." unique_id=671665798 instance=ExtResource("4_k85di")]
+position = Vector2(1320, 469)
+scale = Vector2(7.7073364, 1.0922943)
+
+[node name="StaticBody2D10" parent="." unique_id=2095314920 instance=ExtResource("4_k85di")]
+position = Vector2(205, 325)
+scale = Vector2(7.7073364, 1.0922943)
+
+[node name="StaticBody2D11" parent="." unique_id=1433144504 instance=ExtResource("4_k85di")]
+position = Vector2(1309.0001, 325)
+scale = Vector2(9.449736, 1.0922943)
+
+[node name="StaticBody2D8" parent="." unique_id=1833386308 instance=ExtResource("4_k85di")]
+position = Vector2(164, 621)
+scale = Vector2(9.261752, 1.0922943)
+
+[node name="StaticBody2D9" parent="." unique_id=495689387 instance=ExtResource("4_k85di")]
+position = Vector2(1262, 621)
+scale = Vector2(7.7073364, 1.0922943)
