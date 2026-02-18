@@ -16,6 +16,14 @@ offset_right = 642.0
 offset_bottom = 428.0
 theme_override_font_sizes/font_size = 30
 
+[node name="DeathLabel" type="Label" parent="." unique_id=1510842261]
+unique_name_in_owner = true
+offset_left = 602.0
+offset_top = 460.0
+offset_right = 642.0
+offset_bottom = 502.0
+theme_override_font_sizes/font_size = 30
+
 [node name="Label" type="Label" parent="." unique_id=10091672]
 offset_left = 501.0
 offset_top = 312.0

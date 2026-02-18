@@ -73,12 +73,12 @@ func die():
 	angular_velocity = 0.0
 	rocket_sprite.visible = false
 	animated_sprite.play("die")
+	LevelManager.set_death_count(LevelManager.death_count + 1)
 
 func restart_game():
 	get_tree().call_deferred("reload_current_scene")
 
 
 func _on_body_entered(body: Node) -> void:
-	print("Collided with: ", body.name)
 	if body is Obstacle:
 		die()

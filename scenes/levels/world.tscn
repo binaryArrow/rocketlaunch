@@ -92,3 +92,15 @@ offset_top = 20.0
 offset_right = -160.5
 offset_bottom = 43.0
 grow_horizontal = 2
+
+[node name="DeathLabel" type="Label" parent="Control" unique_id=1838318772]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -281.5
+offset_top = 20.0
+offset_right = -280.5
+offset_bottom = 43.0
+grow_horizontal = 2

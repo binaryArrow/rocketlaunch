@@ -1,10 +1,13 @@
 extends Node
 
+signal died
+
 const MAX_LEVEL := 9
 const LEVEL_PATH_TEMPLATE := "res://scenes/levels/level%d.tscn"
 const END_SCREEN_PATH := "res://scenes/end_screen.tscn"
 var current_level := 0
 var elapsed_time: float = 0.0
+var death_count: int = 0
 
 func next_level():
 	current_level += 1
@@ -18,3 +21,7 @@ func next_level():
 
 func change_scene_to(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
+
+func set_death_count(count: int):
+	death_count = count
+	emit_signal("died")
