@@ -1,13 +1,17 @@
 extends Node
 
+const MAX_LEVEL := 9
 const LEVEL_PATH_TEMPLATE := "res://scenes/levels/level%d.tscn"
+const END_SCREEN_PATH := "res://scenes/end_screen.tscn"
 var current_level := 0
+var elapsed_time: float = 0.0
 
 func next_level():
 	current_level += 1
 	var path := LEVEL_PATH_TEMPLATE % current_level
-	print("Loading level: ", path)
-	if ResourceLoader.exists(path):
+	if current_level > MAX_LEVEL and ResourceLoader.exists(END_SCREEN_PATH):
+		change_scene_to(END_SCREEN_PATH)
+	elif ResourceLoader.exists(path):
 		change_scene_to(path)
 	else:
 		push_warning("No more levels — level %d not found." % current_level)

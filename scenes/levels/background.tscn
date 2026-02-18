@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ah1bdol7em1"]
+[gd_scene format=3 uid="uid://c3ah1bdol7em1"]
 
 [ext_resource type="Shader" uid="uid://dwom37nw6apg4" path="res://shaders/stars.gdshader" id="1_unick"]
 
@@ -13,10 +13,10 @@ shader_parameter/smallStarAmount = 0.001
 shader_parameter/mediumStarAmount = 0.001
 shader_parameter/bigStarAmount = 0.001
 
-[node name="Background" type="CanvasLayer"]
+[node name="Background" type="CanvasLayer" unique_id=1591780769]
 layer = -10
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=377898275]
 material = SubResource("ShaderMaterial_7pqwp")
 offset_right = 40.0
 offset_bottom = 40.0

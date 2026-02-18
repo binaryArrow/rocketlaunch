@@ -3,6 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://50ejuu2h1pxd" path="res://scenes/levels/world.tscn" id="1_hghvf"]
 [ext_resource type="PackedScene" uid="uid://cpdovtc5o2deu" path="res://scenes/rocket/rocket.tscn" id="2_5kr0j"]
 [ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="3_ry65h"]
+[ext_resource type="Texture2D" uid="uid://cuw03u0tve666" path="res://assets/left_key.png" id="4_ry65h"]
+[ext_resource type="Texture2D" uid="uid://cdyti70katxhj" path="res://assets/right_key.png" id="5_d0grl"]
+[ext_resource type="Texture2D" uid="uid://wngbqvpno1c0" path="res://assets/space.png" id="6_d0grl"]
+
+[sub_resource type="Gradient" id="Gradient_d0grl"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vals0"]
+gradient = SubResource("Gradient_d0grl")
 
 [node name="Level" type="Node2D" unique_id=1466572793]
 
@@ -15,3 +24,50 @@ position = Vector2(706, 759)
 [node name="StaticBody2D" parent="." unique_id=709902558 instance=ExtResource("3_ry65h")]
 position = Vector2(335, 298)
 scale = Vector2(2.48, 1)
+
+[node name="LeftKey" type="Sprite2D" parent="." unique_id=1413049826]
+position = Vector2(74.36361, 762.06433)
+scale = Vector2(1.9204509, 2.2580397)
+texture = ExtResource("4_ry65h")
+
+[node name="RightKey" type="Sprite2D" parent="." unique_id=589107275]
+position = Vector2(140.36362, 762.06433)
+scale = Vector2(1.9204509, 2.2580397)
+texture = ExtResource("5_d0grl")
+
+[node name="Label" type="Label" parent="." unique_id=518516281]
+offset_left = 26.0
+offset_top = 705.0
+offset_right = 190.0
+offset_bottom = 728.0
+text = "LEFT and RIGHT with:"
+
+[node name="Label2" type="Label" parent="." unique_id=1742409221]
+offset_left = 238.0
+offset_top = 705.0
+offset_right = 402.0
+offset_bottom = 728.0
+text = "THRUST with:"
+
+[node name="Label3" type="Label" parent="." unique_id=277209271]
+offset_left = 297.0
+offset_top = 99.0
+offset_right = 461.0
+offset_bottom = 122.0
+text = "LAND HERE"
+
+[node name="Space" type="Sprite2D" parent="." unique_id=134717390]
+position = Vector2(291, 763)
+scale = Vector2(3.2722597, 1.1030858)
+texture = ExtResource("6_d0grl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=124517251]
+position = Vector2(339.00003, 177.00002)
+rotation = 1.5707964
+scale = Vector2(0.30167046, 10.682497)
+texture = SubResource("GradientTexture1D_vals0")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1323597092]
+position = Vector2(71.71698, 132.53061)
+scale = Vector2(0.9622642, 1.0204082)
+polygon = PackedVector2Array(256.98035, 72, 278.8039, 99.44, 300.62744, 72)

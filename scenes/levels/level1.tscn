@@ -5,6 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://b8cyql2s764g2" path="res://scenes/platforms/platform.tscn" id="3_mg8dc"]
 [ext_resource type="PackedScene" uid="uid://cvs6o1j6lrd1m" path="res://scenes/platforms/obstacle.tscn" id="4_5yh3o"]
 
+[sub_resource type="Gradient" id="Gradient_d0grl"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bfxgj"]
+gradient = SubResource("Gradient_d0grl")
+
 [node name="Level" type="Node2D" unique_id=1466572793]
 
 [node name="World" parent="." unique_id=1471703231 instance=ExtResource("1_pgq8h")]
@@ -19,3 +25,22 @@ position = Vector2(702, 310)
 [node name="StaticBody2D2" parent="." unique_id=2127928289 instance=ExtResource("4_5yh3o")]
 position = Vector2(728, 404)
 scale = Vector2(5.3364305, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=976814921]
+position = Vector2(701.00006, 492.61383)
+rotation = 1.5707964
+scale = Vector2(0.30167046, 10.682497)
+texture = SubResource("GradientTexture1D_bfxgj")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1252847759]
+position = Vector2(702, 466)
+scale = Vector2(0.9622642, 0.99803907)
+offset = Vector2(-278.80386, -82.1785)
+polygon = PackedVector2Array(256.98035, 72, 277.76462, 42.328033, 300.62744, 72)
+
+[node name="Label" type="Label" parent="." unique_id=2043097969]
+offset_left = 626.0
+offset_top = 545.0
+offset_right = 784.0
+offset_bottom = 568.0
+text = "DONT TOUCH THESE"

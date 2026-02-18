@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c7ov861i6cdth"]
+
+[ext_resource type="Script" uid="uid://cd76bg3rtf5no" path="res://scenes/end_screen.gd" id="1_6e1uj"]
+[ext_resource type="PackedScene" uid="uid://c3ah1bdol7em1" path="res://scenes/levels/background.tscn" id="2_jc7ji"]
+
+[node name="EndScreen" type="Node2D" unique_id=1920693550]
+script = ExtResource("1_6e1uj")
+
+[node name="Background" parent="." unique_id=1591780769 instance=ExtResource("2_jc7ji")]
+
+[node name="TimeLabel" type="Label" parent="." unique_id=2072965730]
+unique_name_in_owner = true
+offset_left = 602.0
+offset_top = 386.0
+offset_right = 642.0
+offset_bottom = 428.0
+theme_override_font_sizes/font_size = 30
+
+[node name="Label" type="Label" parent="." unique_id=10091672]
+offset_left = 501.0
+offset_top = 312.0
+offset_right = 928.0
+offset_bottom = 354.0
+theme_override_font_sizes/font_size = 30
+text = "Congratulations, you made it!"
